@@ -40,7 +40,7 @@ window.onload = function () {
         }
 
     function Ball(){
-        rad = 15*Math.abs(Math.sin(0.01*theta))+5;
+        rad = 30*Math.abs(Math.cos(0.01*theta))+5;
         context.beginPath();
         context.arc(ballx, bally, rad, 0, Math.PI * 2, false);
         context.fill(); //Fills in the ball.
@@ -50,6 +50,7 @@ window.onload = function () {
 
     function renderCircleGroup() {
         //context.clearRect(0, 0, width, height);
+        radius = (200)+ 100*Math.abs(Math.sin(0.01 * theta)) + 5;
         centerX = width/2;
         centerY = height/2;
         var n = 1000;

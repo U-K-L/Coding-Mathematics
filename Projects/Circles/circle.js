@@ -10,18 +10,18 @@ window.onload = function () {
         centerY = height/2,
         radius = 200,
         angle = 0,
-        speed = 0.05,
+        speed = 0.00005,
         x,y;
     var xradius = 600, yradius = 200;
     var xangle = 0, yangle = 0,
-    xspeed = .1, yspeed= .2
+    xspeed = .01, yspeed= .02
 
         //renderChaoticCircle();
         //LissaJousCurve();
         //Circle();
-        //renderChaoticCircle();
+        renderChaoticCircle();
         //Elispe();
-        //renderCircleGroup();
+        renderCircleGroup();
 
 
     function Circle() {
@@ -40,6 +40,7 @@ window.onload = function () {
         context.clearRect(0, 0, width, height);
         var n = 10;
         for(var i = 0; i < n; i++){
+            context.fillStyle = "rgba(" + (Math.random() * 254 + 1) + "," + (Math.random() * 154 + 1) + "," + "255" + ",255)";
             x = centerX + radius * Math.cos(angle);
             y = centerY + radius * Math.sin(angle);
             context.beginPath();
@@ -53,7 +54,7 @@ window.onload = function () {
 
         function renderChaoticCircle(){
             var rad = Math.sqrt(Math.pow(height, 2) + Math.pow(width, 2));
-            radius = 300 * Math.abs(Math.cos(0.01 * angle));
+            radius = 300 * Math.abs(Math.cos(speed*10 * angle));
             x = centerX + radius * Math.cos(angle);
             y = centerY + radius * Math.sin(angle);
             context.clearRect(0, 0, width, height);
@@ -61,7 +62,7 @@ window.onload = function () {
             context.arc(x, y, 20, 0, Math.PI * 2, false); //Creates an arc at position centerX, Y, and full PI.
             context.fill(); //Fills in the ball.
 
-            angle += 0.01 + Math.abs(Math.sin(0.005 * angle));
+            angle += speed + Math.abs(Math.sin(speed * angle));
             requestAnimationFrame(renderChaoticCircle);
         }
 
